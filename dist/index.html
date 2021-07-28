@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Login Form</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<section class="section">
+  <div class="container">
+    <article class="card">
+      <div class="card-content">
+        <h1 class="title">Login</h1>
+        <p class="subtitle">Enter your email and password.</p>
+        <form id="login-form" @submit.prevent="submitLogin">
+          <div 
+            v-if="hasErrors"
+            id="login-errors" 
+            role="alert" 
+            aria-live="assertive"
+          >
+            <div class="notification is-danger">
+              It looks like the email and password entered doesn't match our records. Please try again!
+            </div>
+          </div>
+          <div class="field">
+            <label for="email" class="label">Email:</label>
+            <input 
+              type="email" 
+              class="input" 
+              :class="{ 'is-danger': hasErrors }" 
+              :disabled="isLoading"
+              id="email" 
+              aria-describedby="login-errors"
+              v-model="fields.email"
+              required
+            >
+          </div>
+          <div class="field">
+            <div class="label space-between">
+              <label for="password" id="password-label">Password:</label>
+              <button 
+                type="button"
+                class="button is-text is-small" 
+                aria-describedby="password-label" 
+                @click.prevent="passwordIsText = !passwordIsText"
+              >Toggle {{ passwordIsText ? 'masked' : 'readable' }}</button>
+            </div>
+            <input 
+              :type="passwordIsText ? 'text' : 'password'" 
+              class="input" 
+              :class="{ 'is-danger': hasErrors }" 
+              :disabled="isLoading"
+              id="password"
+              aria-describedby="login-errors"
+              v-model="fields.password"
+              required
+            >
+          </div>
+          <div class="field">
+            <div class="control">
+              <label class="checkbox">
+                <input 
+                  type="checkbox" 
+                  :disabled="isLoading"
+                  v-model="fields.remember"
+                >
+                <span class="checkbox-text">Remember me!</span>
+              </label>
+            </div>
+          </div>
+          <div class="field">
+            <div class="control space-between">
+              <div 
+                id="feedback"
+                role="status"
+                aria-live="polite"
+              >
+                <span class="msg-loading" v-if="isLoading">Loading...</span>
+                <span class="msg-success" v-if="isSuccess">Login successful!</span>
+              </div>
+              <button 
+                type="submit"
+                class="button is-medium is-link" 
+                :disabled="isLoading || isSuccess"
+                aria-describedby="feedback"
+              >Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </article>
+  </div>
+</section>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>

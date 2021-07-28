@@ -1,0 +1,74 @@
+@charset "UTF-8";
+body {
+  background: url(https://th.bing.com/th/id/R.51effee7fd6bbb8c6749d8caaa6f2239?rik=5JDNE0T860GZAA&riu=http%3a%2f%2fi.imgur.com%2fvrBagV1.jpg&ehk=YbwfzZXj28jPcV0chZhTCD9hTc84RuSC7k3nC7dPaUU%3d&risl=&pid=ImgRaw);
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+}
+
+.input,
+.button {
+  transition: all 150ms ease;
+}
+
+.button:focus {
+  text-decoration: underline;
+  border: solid 1px grey;
+}
+
+.card {
+  max-width: 26rem;
+  margin: 0 auto;
+  position: relative;
+  top: 14em;
+}
+.card .title {
+  margin-bottom: 2.25rem;
+}
+.card:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+label.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.checkbox-text {
+  margin-left: 0.5rem;
+}
+
+[type=checkbox]:focus + .checkbox-text {
+  text-decoration: underline;
+}
+
+.notification.is-danger {
+  background: crimson;
+  margin-bottom: 1.5rem;
+}
+
+.msg-loading {
+  color: royalblue;
+}
+
+.msg-success {
+  color: forestgreen;
+  display: inline-block;
+  vertical-align: middle;
+}
+.msg-success:before {
+  content: "✔";
+  font-size: 2em;
+  margin-right: 0.25rem;
+  margin-top: -0.25rem;
+  display: inline-block;
+  vertical-align: middle;
+}
